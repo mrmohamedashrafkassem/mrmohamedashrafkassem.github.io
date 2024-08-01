@@ -43,7 +43,7 @@
             padding: 20px;
             margin: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            transition: transform 0.5s;
             display: flex;
             flex-direction: column;
             align-items: center; /* Center children horizontally */
@@ -60,8 +60,8 @@
         }
         .qr-code {
             margin-top: 10px;
-            width: 80px;
-            height: 80px;
+            width: 50px;
+            height: 50px;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
@@ -69,7 +69,7 @@
 <body>
     <header>
         <div class="container">
-            <h1>استاذ محمد أشرف قاسم</h1>
+            <h1>الاستاذ محمد أشرف قاسم</h1>
             <h2>مدرس العلوم للمرحلة الاعدادية والكيمياء للمرحلة الثانوية</h2>
         </div>
     </header>
@@ -80,38 +80,22 @@
             <div class="social-link">
                 <div id="qrcode-facebook" class="qr-code"></div>
                 <h3>فيسبوك</h3>
-                <p><a href="https://www.facebook.com/yourprofile" target="_blank">facebook.com/yourprofile</a></p>
+                <p><a href="https://www.facebook.com/people/Mohamed-Ashraf-Kassem/pfbid0331vgCZ6fqM1CACQdckCsRYUYebCyvPz5By3wPg1AuEhFHfBS1kivmHqNAkHoKakml/?mibextid=ZbWKwL" target="_blank">زيارة البروفايل</a></p>
             </div>
 
-            <!-- Twitter -->
+            <!-- WhatsApp -->
             <div class="social-link">
-                <div id="qrcode-twitter" class="qr-code"></div>
+                <div id="qrcode-whatsapp" class="qr-code"></div>
                 <h3>تويتر</h3>
-                <p><a href="https://www.twitter.com/yourprofile" target="_blank">twitter.com/yourprofile</a></p>
-            </div>
-
-            <!-- Instagram -->
-            <div class="social-link">
-                <div id="qrcode-instagram" class="qr-code"></div>
-                <h3>إنستجرام</h3>
-                <p><a href="https://www.instagram.com/yourprofile" target="_blank">instagram.com/yourprofile</a></p>
-            </div>
-
-            <!-- YouTube -->
-            <div class="social-link">
-                <div id="qrcode-youtube" class="qr-code"></div>
-                <h3>يوتيوب</h3>
-                <p><a href="https://www.youtube.com/yourchannel" target="_blank">youtube.com/yourchannel</a></p>
+                <p><a href="https://wa.me/qr/RCJU4WFFXQJWG1" target="_blank">ارسل رسالة</a></p>
             </div>
         </div>
     </div>
 
     <script>
         // Generate QR codes
-        new QRCode(document.getElementById("qrcode-facebook"), "https://www.facebook.com/yourprofile");
-        new QRCode(document.getElementById("qrcode-twitter"), "https://www.twitter.com/yourprofile");
-        new QRCode(document.getElementById("qrcode-instagram"), "https://www.instagram.com/yourprofile");
-        new QRCode(document.getElementById("qrcode-youtube"), "https://www.youtube.com/yourchannel");
+        new QRCode(document.getElementById("qrcode-facebook"), "https://www.facebook.com/people/Mohamed-Ashraf-Kassem/pfbid0331vgCZ6fqM1CACQdckCsRYUYebCyvPz5By3wPg1AuEhFHfBS1kivmHqNAkHoKakml/?mibextid=ZbWKwL");
+        new QRCode(document.getElementById("qrcode-whatsapp"), "https://wa.me/qr/RCJU4WFFXQJWG1");
     </script>
 </body>
 </html>
