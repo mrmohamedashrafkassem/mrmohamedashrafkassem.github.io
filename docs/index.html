@@ -6,7 +6,63 @@
     <title>روابط وسائل التواصل الاجتماعي</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS content from above */
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            direction: rtl;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77b300 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        .social-links {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .social-link {
+            background: #fff;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center children horizontally */
+        }
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+        .social-link h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+        .social-link p {
+            color: #666;
+        }
+        .qr-code {
+            margin-top: 10px;
+            width: 80px;
+            height: 80px;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 </head>
@@ -14,6 +70,7 @@
     <header>
         <div class="container">
             <h1>استاذ محمد أشرف قاسم</h1>
+            <h2>مدرس العلوم للمرحلة الاعدادية والكيمياء للمرحلة الثانوية</h2>
         </div>
     </header>
 
@@ -21,68 +78,40 @@
         <div class="social-links">
             <!-- Facebook -->
             <div class="social-link">
+                <div id="qrcode-facebook" class="qr-code"></div>
                 <h3>فيسبوك</h3>
                 <p><a href="https://www.facebook.com/yourprofile" target="_blank">facebook.com/yourprofile</a></p>
-                <div class="button-container">
-                    <button>Follow</button>
-                    <div id="qrcode-facebook" class="qr-code"></div>
-                </div>
             </div>
 
             <!-- Twitter -->
             <div class="social-link">
+                <div id="qrcode-twitter" class="qr-code"></div>
                 <h3>تويتر</h3>
                 <p><a href="https://www.twitter.com/yourprofile" target="_blank">twitter.com/yourprofile</a></p>
-                <div class="button-container">
-                    <button>Follow</button>
-                    <div id="qrcode-twitter" class="qr-code"></div>
-                </div>
             </div>
 
             <!-- Instagram -->
             <div class="social-link">
+                <div id="qrcode-instagram" class="qr-code"></div>
                 <h3>إنستجرام</h3>
                 <p><a href="https://www.instagram.com/yourprofile" target="_blank">instagram.com/yourprofile</a></p>
-                <div class="button-container">
-                    <button>Follow</button>
-                    <div id="qrcode-instagram" class="qr-code"></div>
-                </div>
             </div>
 
             <!-- YouTube -->
             <div class="social-link">
+                <div id="qrcode-youtube" class="qr-code"></div>
                 <h3>يوتيوب</h3>
                 <p><a href="https://www.youtube.com/yourchannel" target="_blank">youtube.com/yourchannel</a></p>
-                <div class="button-container">
-                    <button>Subscribe</button>
-                    <div id="qrcode-youtube" class="qr-code"></div>
-                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Generate QR codes with size
-        new QRCode(document.getElementById("qrcode-facebook"), {
-            text: "https://www.facebook.com/yourprofile",
-            width: 50, // Width of the QR code
-            height: 50 // Height of the QR code
-        });
-        new QRCode(document.getElementById("qrcode-twitter"), {
-            text: "https://www.twitter.com/yourprofile",
-            width: 50,
-            height: 50
-        });
-        new QRCode(document.getElementById("qrcode-instagram"), {
-            text: "https://www.instagram.com/yourprofile",
-            width: 50,
-            height: 50
-        });
-        new QRCode(document.getElementById("qrcode-youtube"), {
-            text: "https://www.youtube.com/yourchannel",
-            width: 50,
-            height: 50
-        });
+        // Generate QR codes
+        new QRCode(document.getElementById("qrcode-facebook"), "https://www.facebook.com/yourprofile");
+        new QRCode(document.getElementById("qrcode-twitter"), "https://www.twitter.com/yourprofile");
+        new QRCode(document.getElementById("qrcode-instagram"), "https://www.instagram.com/yourprofile");
+        new QRCode(document.getElementById("qrcode-youtube"), "https://www.youtube.com/yourchannel");
     </script>
 </body>
 </html>
