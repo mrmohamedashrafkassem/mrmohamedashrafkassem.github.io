@@ -59,7 +59,11 @@
         .social-link p {
             color: #666;
         }
+        .qr-code {
+            margin-top: 10px;
+        }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 </head>
 <body>
     <header>
@@ -72,32 +76,40 @@
         <div class="social-links">
             <!-- Facebook -->
             <div class="social-link">
-                <img src="https://via.placeholder.com/100" alt="Facebook QR Code">
+                <div id="qrcode-facebook" class="qr-code"></div>
                 <h3>فيسبوك</h3>
-                <p><a href="https://www.facebook.com/yourprofile">facebook.com/yourprofile</a></p>
+                <p><a href="https://www.facebook.com/yourprofile" target="_blank">facebook.com/yourprofile</a></p>
             </div>
 
             <!-- Twitter -->
             <div class="social-link">
-                <img src="https://via.placeholder.com/100" alt="Twitter QR Code">
+                <div id="qrcode-twitter" class="qr-code"></div>
                 <h3>تويتر</h3>
-                <p><a href="https://www.twitter.com/yourprofile">twitter.com/yourprofile</a></p>
+                <p><a href="https://www.twitter.com/yourprofile" target="_blank">twitter.com/yourprofile</a></p>
             </div>
 
             <!-- Instagram -->
             <div class="social-link">
-                <img src="https://via.placeholder.com/100" alt="Instagram QR Code">
+                <div id="qrcode-instagram" class="qr-code"></div>
                 <h3>إنستجرام</h3>
-                <p><a href="https://www.instagram.com/yourprofile">instagram.com/yourprofile</a></p>
+                <p><a href="https://www.instagram.com/yourprofile" target="_blank">instagram.com/yourprofile</a></p>
             </div>
 
             <!-- YouTube -->
             <div class="social-link">
-                <img src="https://via.placeholder.com/100" alt="YouTube QR Code">
+                <div id="qrcode-youtube" class="qr-code"></div>
                 <h3>يوتيوب</h3>
-                <p><a href="https://www.youtube.com/yourchannel">youtube.com/yourchannel</a></p>
+                <p><a href="https://www.youtube.com/yourchannel" target="_blank">youtube.com/yourchannel</a></p>
             </div>
         </div>
     </div>
+
+    <script>
+        // Generate QR codes
+        new QRCode(document.getElementById("qrcode-facebook"), "https://www.facebook.com/yourprofile");
+        new QRCode(document.getElementById("qrcode-twitter"), "https://www.twitter.com/yourprofile");
+        new QRCode(document.getElementById("qrcode-instagram"), "https://www.instagram.com/yourprofile");
+        new QRCode(document.getElementById("qrcode-youtube"), "https://www.youtube.com/yourchannel");
+    </script>
 </body>
 </html>
