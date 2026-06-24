@@ -32,28 +32,28 @@
             overflow-x: hidden;
         }
 
-        /* ── Molecule SVG Background ── */
-        .bg-molecules {
+        /* ── Chemistry Tile Background ── */
+        .bg-chem {
             position: fixed;
             inset: 0;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.04;
-            background-image:
-                radial-gradient(circle 1px at 20% 30%, var(--gold) 1px, transparent 0),
-                radial-gradient(circle 1px at 50% 10%, var(--gold) 1px, transparent 0),
-                radial-gradient(circle 1px at 80% 25%, var(--gold) 1px, transparent 0),
-                radial-gradient(circle 1px at 35% 60%, var(--gold) 1px, transparent 0),
-                radial-gradient(circle 1px at 65% 75%, var(--gold) 1px, transparent 0),
-                radial-gradient(circle 1px at 10% 80%, var(--gold) 1px, transparent 0),
-                radial-gradient(circle 1px at 90% 55%, var(--gold) 1px, transparent 0);
+            overflow: hidden;
+        }
+        .bg-chem svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
         }
 
         /* ── Hero ── */
         .hero {
             position: relative;
             z-index: 1;
-            background: linear-gradient(160deg, #1a0a0a 0%, #2d0a0a 50%, #1a0505 100%);
+            background: linear-gradient(160deg, rgba(26,10,10,0.18) 0%, rgba(45,10,10,0.15) 50%, rgba(26,5,5,0.18) 100%);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
             padding: 60px 24px 48px;
             text-align: center;
             border-bottom: 1px solid rgba(201,168,76,0.25);
@@ -269,7 +269,265 @@
 </head>
 <body>
 
-    <div class="bg-molecules"></div>
+    <!-- Chemistry icon tile background -->
+    <div class="bg-chem">
+            <svg viewBox="0 0 1280 960" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Flask icon -->
+          <symbol id="ico-flask" viewBox="0 0 40 48">
+            <path d="M14 2h12M13 2v14L4 38c-1.5 3 0 8 6 8h20c6 0 7.5-5 6-8L27 16V2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="13" cy="34" r="2" fill="currentColor"/>
+            <circle cx="22" cy="38" r="1.5" fill="currentColor"/>
+            <circle cx="28" cy="33" r="1" fill="currentColor"/>
+          </symbol>
+          <!-- Atom icon -->
+          <symbol id="ico-atom" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="4" fill="currentColor"/>
+            <ellipse cx="24" cy="24" rx="20" ry="8" fill="none" stroke="currentColor" stroke-width="2"/>
+            <ellipse cx="24" cy="24" rx="20" ry="8" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(60 24 24)"/>
+            <ellipse cx="24" cy="24" rx="20" ry="8" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(120 24 24)"/>
+          </symbol>
+          <!-- Test tube icon -->
+          <symbol id="ico-tube" viewBox="0 0 24 48">
+            <path d="M6 2h12M7 2v28c0 5 10 10 10 0V2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="10" cy="36" r="1.5" fill="currentColor"/>
+            <circle cx="14" cy="39" r="1" fill="currentColor"/>
+          </symbol>
+          <!-- Benzene ring icon -->
+          <symbol id="ico-benzene" viewBox="0 0 48 48">
+            <polygon points="24,4 42,14 42,34 24,44 6,34 6,14" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <polygon points="24,11 36,18 36,30 24,37 12,30 12,18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4,3"/>
+          </symbol>
+          <!-- Molecule bond icon -->
+          <symbol id="ico-mol" viewBox="0 0 64 32">
+            <circle cx="8"  cy="16" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="32" cy="8"  r="6" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="56" cy="16" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="32" cy="24" r="5" fill="none" stroke="currentColor" stroke-width="2"/>
+            <line x1="15" y1="16" x2="26" y2="10" stroke="currentColor" stroke-width="1.8"/>
+            <line x1="38" y1="10" x2="49" y2="16" stroke="currentColor" stroke-width="1.8"/>
+            <line x1="32" y1="14" x2="32" y2="19" stroke="currentColor" stroke-width="1.8"/>
+          </symbol>
+          <!-- Erlenmeyer flask -->
+          <symbol id="ico-erlen" viewBox="0 0 44 52">
+            <path d="M15 4h14M14 4v16L3 40c-1 2.5 0.5 9 8 9h22c7.5 0 9-6.5 8-9L30 20V4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 40 h38" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="14" cy="43" r="1.8" fill="currentColor"/>
+            <circle cx="24" cy="46" r="1.3" fill="currentColor"/>
+            <circle cx="31" cy="42" r="1" fill="currentColor"/>
+          </symbol>
+          <!-- DNA helix simplified -->
+          <symbol id="ico-dna" viewBox="0 0 30 56">
+            <path d="M5 4 Q22 14 5 24 Q22 34 5 44 Q22 54 5 64" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M25 4 Q8 14 25 24 Q8 34 25 44 Q8 54 25 64" fill="none" stroke="currentColor" stroke-width="2"/>
+            <line x1="5"  y1="14" x2="25" y2="14" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="5"  y1="24" x2="25" y2="24" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="5"  y1="34" x2="25" y2="34" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="5"  y1="44" x2="25" y2="44" stroke="currentColor" stroke-width="1.5"/>
+          </symbol>
+          <!-- Microscope simplified -->
+          <symbol id="ico-micro" viewBox="0 0 40 48">
+            <rect x="16" y="2" width="10" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <line x1="21" y1="24" x2="21" y2="32" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M10 32 h20 L34 44 H6 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+            <line x1="6" y1="44" x2="34" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </symbol>
+        </defs>
+
+        <use href="#ico-atom" x="22" y="22" width="34" height="34" color="#c9a84c" opacity="0.09" transform="rotate(-8,39,39)"/>
+        <use href="#ico-tube" x="97" y="11" width="34" height="68" color="#c9a84c" opacity="0.07" transform="rotate(18,114,45)"/>
+        <use href="#ico-flask" x="182" y="28" width="34" height="40" color="#c9a84c" opacity="0.07" transform="rotate(-12,199,48)"/>
+        <use href="#ico-flask" x="268" y="19" width="34" height="40" color="#c9a84c" opacity="0.07" transform="rotate(20,285,39)"/>
+        <use href="#ico-micro" x="340" y="24" width="34" height="41" color="#c9a84c" opacity="0.08" transform="rotate(-25,357,45)"/>
+        <use href="#ico-erlen" x="425" y="15" width="34" height="40" color="#6eb5e0" opacity="0.07" transform="rotate(-12,442,35)"/>
+        <use href="#ico-atom" x="506" y="23" width="34" height="34" color="#e87a4e" opacity="0.07" transform="rotate(-3,523,40)"/>
+        <use href="#ico-flask" x="578" y="24" width="34" height="40" color="#c9a84c" opacity="0.08" transform="rotate(9,595,44)"/>
+        <use href="#ico-atom" x="666" y="21" width="34" height="34" color="#c9a84c" opacity="0.08" transform="rotate(15,683,38)"/>
+        <use href="#ico-atom" x="744" y="17" width="34" height="34" color="#c9a84c" opacity="0.09" transform="rotate(-11,761,34)"/>
+        <use href="#ico-benzene" x="829" y="26" width="34" height="34" color="#c9a84c" opacity="0.08" transform="rotate(-8,846,43)"/>
+        <use href="#ico-tube" x="903" y="0" width="34" height="68" color="#6eb5e0" opacity="0.08" transform="rotate(-12,920,34)"/>
+        <use href="#ico-tube" x="980" y="12" width="34" height="68" color="#c9a84c" opacity="0.09" transform="rotate(-10,997,46)"/>
+        <use href="#ico-dna" x="1062" y="10" width="34" height="63" color="#6eb5e0" opacity="0.09" transform="rotate(19,1079,42)"/>
+        <use href="#ico-flask" x="1147" y="20" width="34" height="40" color="#e05555" opacity="0.07" transform="rotate(-5,1164,40)"/>
+        <use href="#ico-atom" x="1225" y="21" width="34" height="34" color="#e05555" opacity="0.09" transform="rotate(20,1242,38)"/>
+        <use href="#ico-micro" x="19" y="100" width="34" height="41" color="#e87a4e" opacity="0.09" transform="rotate(4,36,120)"/>
+        <use href="#ico-tube" x="103" y="91" width="34" height="68" color="#e05555" opacity="0.09" transform="rotate(10,120,125)"/>
+        <use href="#ico-dna" x="191" y="96" width="34" height="63" color="#6eb5e0" opacity="0.07" transform="rotate(-17,208,127)"/>
+        <use href="#ico-atom" x="260" y="108" width="34" height="34" color="#c9a84c" opacity="0.07" transform="rotate(-16,277,125)"/>
+        <use href="#ico-atom" x="349" y="111" width="34" height="34" color="#e87a4e" opacity="0.08" transform="rotate(13,366,128)"/>
+        <use href="#ico-mol" x="418" y="112" width="34" height="17" color="#c9a84c" opacity="0.07" transform="rotate(18,435,120)"/>
+        <use href="#ico-erlen" x="500" y="106" width="34" height="40" color="#c9a84c" opacity="0.08" transform="rotate(2,517,126)"/>
+        <use href="#ico-flask" x="591" y="97" width="34" height="40" color="#c9a84c" opacity="0.09" transform="rotate(-9,608,117)"/>
+        <use href="#ico-atom" x="671" y="101" width="34" height="34" color="#c9a84c" opacity="0.08" transform="rotate(15,688,118)"/>
+        <use href="#ico-tube" x="751" y="78" width="34" height="68" color="#6eb5e0" opacity="0.07" transform="rotate(9,768,112)"/>
+        <use href="#ico-erlen" x="826" y="101" width="34" height="40" color="#e87a4e" opacity="0.07" transform="rotate(-18,843,121)"/>
+        <use href="#ico-benzene" x="897" y="97" width="34" height="34" color="#c9a84c" opacity="0.07" transform="rotate(11,914,114)"/>
+        <use href="#ico-micro" x="979" y="96" width="34" height="41" color="#c9a84c" opacity="0.09" transform="rotate(24,996,116)"/>
+        <use href="#ico-micro" x="1071" y="104" width="34" height="41" color="#c9a84c" opacity="0.07" transform="rotate(-9,1088,125)"/>
+        <use href="#ico-benzene" x="1141" y="104" width="34" height="34" color="#c9a84c" opacity="0.09" transform="rotate(19,1158,121)"/>
+        <use href="#ico-dna" x="1229" y="96" width="34" height="63" color="#c9a84c" opacity="0.09" transform="rotate(-2,1246,128)"/>
+        <use href="#ico-micro" x="17" y="182" width="34" height="41" color="#c9a84c" opacity="0.07" transform="rotate(-11,34,202)"/>
+        <use href="#ico-flask" x="102" y="172" width="34" height="40" color="#c9a84c" opacity="0.09" transform="rotate(-11,119,192)"/>
+        <use href="#ico-atom" x="182" y="177" width="34" height="34" color="#c9a84c" opacity="0.09" transform="rotate(-22,199,194)"/>
+        <use href="#ico-flask" x="262" y="180" width="34" height="40" color="#6eb5e0" opacity="0.07" transform="rotate(7,279,200)"/>
+        <use href="#ico-micro" x="350" y="178" width="34" height="41" color="#e05555" opacity="0.09" transform="rotate(-17,367,199)"/>
+        <use href="#ico-micro" x="418" y="184" width="34" height="41" color="#e87a4e" opacity="0.07" transform="rotate(-19,435,205)"/>
+        <use href="#ico-erlen" x="496" y="175" width="34" height="40" color="#e87a4e" opacity="0.08" transform="rotate(4,513,195)"/>
+        <use href="#ico-flask" x="578" y="179" width="34" height="40" color="#e87a4e" opacity="0.09" transform="rotate(-4,595,199)"/>
+        <use href="#ico-benzene" x="659" y="188" width="34" height="34" color="#e05555" opacity="0.09" transform="rotate(3,676,205)"/>
+        <use href="#ico-tube" x="737" y="172" width="34" height="68" color="#6eb5e0" opacity="0.08" transform="rotate(-10,754,206)"/>
+        <use href="#ico-atom" x="815" y="177" width="34" height="34" color="#c9a84c" opacity="0.09" transform="rotate(9,832,194)"/>
+        <use href="#ico-benzene" x="910" y="181" width="34" height="34" color="#e05555" opacity="0.08" transform="rotate(6,927,198)"/>
+        <use href="#ico-dna" x="975" y="172" width="34" height="63" color="#c9a84c" opacity="0.07" transform="rotate(-1,992,204)"/>
+        <use href="#ico-mol" x="1070" y="188" width="34" height="17" color="#e87a4e" opacity="0.08" transform="rotate(2,1087,196)"/>
+        <use href="#ico-benzene" x="1136" y="185" width="34" height="34" color="#6eb5e0" opacity="0.07" transform="rotate(-22,1153,202)"/>
+        <use href="#ico-flask" x="1231" y="188" width="34" height="40" color="#c9a84c" opacity="0.09" transform="rotate(5,1248,208)"/>
+        <use href="#ico-tube" x="20" y="240" width="34" height="68" color="#c9a84c" opacity="0.09" transform="rotate(-20,37,274)"/>
+        <use href="#ico-atom" x="98" y="262" width="34" height="34" color="#c9a84c" opacity="0.07" transform="rotate(0,115,279)"/>
+        <use href="#ico-flask" x="191" y="262" width="34" height="40" color="#c9a84c" opacity="0.07" transform="rotate(1,208,282)"/>
+        <use href="#ico-mol" x="265" y="270" width="34" height="17" color="#e05555" opacity="0.09" transform="rotate(20,282,279)"/>
+        <use href="#ico-mol" x="344" y="278" width="34" height="17" color="#e87a4e" opacity="0.07" transform="rotate(17,361,286)"/>
+        <use href="#ico-erlen" x="418" y="254" width="34" height="40" color="#c9a84c" opacity="0.07" transform="rotate(4,435,274)"/>
+        <use href="#ico-benzene" x="506" y="257" width="34" height="34" color="#c9a84c" opacity="0.08" transform="rotate(-17,523,274)"/>
+        <use href="#ico-benzene" x="589" y="264" width="34" height="34" color="#6eb5e0" opacity="0.08" transform="rotate(-15,606,281)"/>
+        <use href="#ico-flask" x="658" y="256" width="34" height="40" color="#c9a84c" opacity="0.09" transform="rotate(-6,675,276)"/>
+        <use href="#ico-mol" x="739" y="272" width="34" height="17" color="#c9a84c" opacity="0.07" transform="rotate(22,756,280)"/>
+        <use href="#ico-mol" x="825" y="270" width="34" height="17" color="#c9a84c" opacity="0.07" transform="rotate(20,842,278)"/>
+        <use href="#ico-mol" x="896" y="266" width="34" height="17" color="#c9a84c" opacity="0.08" transform="rotate(-9,913,274)"/>
+        <use href="#ico-dna" x="985" y="244" width="34" height="63" color="#6eb5e0" opacity="0.07" transform="rotate(-25,1002,276)"/>
+        <use href="#ico-mol" x="1068" y="264" width="34" height="17" color="#e05555" opacity="0.09" transform="rotate(3,1085,272)"/>
+        <use href="#ico-atom" x="1136" y="266" width="34" height="34" color="#c9a84c" opacity="0.09" transform="rotate(-16,1153,283)"/>
+        <use href="#ico-tube" x="1224" y="249" width="34" height="68" color="#e87a4e" opacity="0.07" transform="rotate(-23,1241,283)"/>
+        <use href="#ico-flask" x="22" y="335" width="34" height="40" color="#6eb5e0" opacity="0.07" transform="rotate(18,39,355)"/>
+        <use href="#ico-erlen" x="99" y="339" width="34" height="40" color="#c9a84c" opacity="0.08" transform="rotate(14,116,359)"/>
+        <use href="#ico-tube" x="180" y="328" width="34" height="68" color="#e05555" opacity="0.08" transform="rotate(-24,197,362)"/>
+        <use href="#ico-dna" x="263" y="326" width="34" height="63" color="#c9a84c" opacity="0.09" transform="rotate(-10,280,357)"/>
+        <use href="#ico-atom" x="342" y="341" width="34" height="34" color="#e87a4e" opacity="0.07" transform="rotate(5,359,358)"/>
+        <use href="#ico-micro" x="422" y="338" width="34" height="41" color="#6eb5e0" opacity="0.08" transform="rotate(25,439,359)"/>
+        <use href="#ico-flask" x="505" y="340" width="34" height="40" color="#c9a84c" opacity="0.07" transform="rotate(0,522,360)"/>
+        <use href="#ico-atom" x="591" y="347" width="34" height="34" color="#6eb5e0" opacity="0.08" transform="rotate(16,608,364)"/>
+        <use href="#ico-erlen" x="660" y="340" width="34" height="40" color="#c9a84c" opacity="0.07" transform="rotate(-9,677,360)"/>
+        <use href="#ico-flask" x="746" y="342" width="34" height="40" color="#c9a84c" opacity="0.09" transform="rotate(2,763,362)"/>
+        <use href="#ico-dna" x="827" y="326" width="34" height="63" color="#c9a84c" opacity="0.09" transform="rotate(-18,844,358)"/>
+        <use href="#ico-mol" x="895" y="360" width="34" height="17" color="#c9a84c" opacity="0.09" transform="rotate(2,912,368)"/>
+        <use href="#ico-benzene" x="985" y="345" width="34" height="34" color="#6eb5e0" opacity="0.08" transform="rotate(-21,1002,362)"/>
+        <use href="#ico-atom" x="1064" y="348" width="34" height="34" color="#c9a84c" opacity="0.08" transform="rotate(7,1081,365)"/>
+        <use href="#ico-erlen" x="1139" y="338" width="34" height="40" color="#e87a4e" opacity="0.09" transform="rotate(-7,1156,358)"/>
+        <use href="#ico-dna" x="1220" y="330" width="34" height="63" color="#c9a84c" opacity="0.08" transform="rotate(18,1237,361)"/>
+        <use href="#ico-dna" x="24" y="406" width="34" height="63" color="#c9a84c" opacity="0.07" transform="rotate(-6,41,438)"/>
+        <use href="#ico-dna" x="105" y="414" width="34" height="63" color="#c9a84c" opacity="0.09" transform="rotate(16,122,446)"/>
+        <use href="#ico-micro" x="191" y="426" width="34" height="41" color="#e87a4e" opacity="0.09" transform="rotate(-12,208,447)"/>
+        <use href="#ico-tube" x="271" y="408" width="34" height="68" color="#c9a84c" opacity="0.07" transform="rotate(-7,288,442)"/>
+        <use href="#ico-atom" x="342" y="421" width="34" height="34" color="#e05555" opacity="0.09" transform="rotate(-6,359,438)"/>
+        <use href="#ico-tube" x="430" y="400" width="34" height="68" color="#c9a84c" opacity="0.07" transform="rotate(-10,447,434)"/>
+        <use href="#ico-micro" x="501" y="424" width="34" height="41" color="#e87a4e" opacity="0.09" transform="rotate(11,518,444)"/>
+        <use href="#ico-micro" x="575" y="414" width="34" height="41" color="#e87a4e" opacity="0.07" transform="rotate(-16,592,435)"/>
+        <use href="#ico-dna" x="671" y="414" width="34" height="63" color="#e05555" opacity="0.07" transform="rotate(19,688,446)"/>
+        <use href="#ico-flask" x="749" y="416" width="34" height="40" color="#c9a84c" opacity="0.07" transform="rotate(-18,766,436)"/>
+        <use href="#ico-micro" x="825" y="426" width="34" height="41" color="#c9a84c" opacity="0.09" transform="rotate(10,842,446)"/>
+        <use href="#ico-dna" x="910" y="414" width="34" height="63" color="#c9a84c" opacity="0.08" transform="rotate(-15,927,446)"/>
+        <use href="#ico-mol" x="991" y="438" width="34" height="17" color="#e05555" opacity="0.09" transform="rotate(-8,1008,447)"/>
+        <use href="#ico-benzene" x="1064" y="422" width="34" height="34" color="#6eb5e0" opacity="0.08" transform="rotate(-21,1081,439)"/>
+        <use href="#ico-mol" x="1137" y="428" width="34" height="17" color="#6eb5e0" opacity="0.08" transform="rotate(9,1154,436)"/>
+        <use href="#ico-tube" x="1219" y="404" width="34" height="68" color="#e05555" opacity="0.08" transform="rotate(19,1236,438)"/>
+        <use href="#ico-atom" x="29" y="508" width="34" height="34" color="#e87a4e" opacity="0.08" transform="rotate(-4,46,525)"/>
+        <use href="#ico-flask" x="95" y="504" width="34" height="40" color="#e05555" opacity="0.08" transform="rotate(-1,112,524)"/>
+        <use href="#ico-micro" x="187" y="504" width="34" height="41" color="#c9a84c" opacity="0.08" transform="rotate(-6,204,525)"/>
+        <use href="#ico-benzene" x="268" y="510" width="34" height="34" color="#e87a4e" opacity="0.07" transform="rotate(-8,285,527)"/>
+        <use href="#ico-flask" x="347" y="497" width="34" height="40" color="#e87a4e" opacity="0.08" transform="rotate(17,364,517)"/>
+        <use href="#ico-micro" x="415" y="504" width="34" height="41" color="#e05555" opacity="0.09" transform="rotate(9,432,524)"/>
+        <use href="#ico-flask" x="499" y="506" width="34" height="40" color="#c9a84c" opacity="0.09" transform="rotate(2,516,526)"/>
+        <use href="#ico-tube" x="585" y="484" width="34" height="68" color="#c9a84c" opacity="0.08" transform="rotate(-1,602,518)"/>
+        <use href="#ico-micro" x="667" y="500" width="34" height="41" color="#6eb5e0" opacity="0.08" transform="rotate(23,684,520)"/>
+        <use href="#ico-dna" x="735" y="482" width="34" height="63" color="#6eb5e0" opacity="0.07" transform="rotate(5,752,513)"/>
+        <use href="#ico-erlen" x="816" y="492" width="34" height="40" color="#e05555" opacity="0.09" transform="rotate(-21,833,512)"/>
+        <use href="#ico-benzene" x="899" y="502" width="34" height="34" color="#e05555" opacity="0.07" transform="rotate(14,916,519)"/>
+        <use href="#ico-tube" x="981" y="492" width="34" height="68" color="#e87a4e" opacity="0.09" transform="rotate(-18,998,526)"/>
+        <use href="#ico-mol" x="1058" y="508" width="34" height="17" color="#6eb5e0" opacity="0.07" transform="rotate(13,1075,517)"/>
+        <use href="#ico-mol" x="1144" y="516" width="34" height="17" color="#c9a84c" opacity="0.09" transform="rotate(-24,1161,524)"/>
+        <use href="#ico-dna" x="1222" y="484" width="34" height="63" color="#c9a84c" opacity="0.07" transform="rotate(-21,1239,515)"/>
+        <use href="#ico-mol" x="16" y="594" width="34" height="17" color="#c9a84c" opacity="0.09" transform="rotate(-18,33,603)"/>
+        <use href="#ico-dna" x="111" y="570" width="34" height="63" color="#c9a84c" opacity="0.08" transform="rotate(-21,128,602)"/>
+        <use href="#ico-flask" x="188" y="583" width="34" height="40" color="#e87a4e" opacity="0.08" transform="rotate(-19,205,603)"/>
+        <use href="#ico-micro" x="260" y="588" width="34" height="41" color="#c9a84c" opacity="0.07" transform="rotate(2,277,608)"/>
+        <use href="#ico-mol" x="350" y="598" width="34" height="17" color="#c9a84c" opacity="0.09" transform="rotate(24,367,606)"/>
+        <use href="#ico-dna" x="425" y="568" width="34" height="63" color="#c9a84c" opacity="0.09" transform="rotate(-8,442,599)"/>
+        <use href="#ico-atom" x="509" y="587" width="34" height="34" color="#6eb5e0" opacity="0.08" transform="rotate(-10,526,604)"/>
+        <use href="#ico-erlen" x="580" y="587" width="34" height="40" color="#c9a84c" opacity="0.08" transform="rotate(-5,597,607)"/>
+        <use href="#ico-benzene" x="663" y="583" width="34" height="34" color="#6eb5e0" opacity="0.08" transform="rotate(-4,680,600)"/>
+        <use href="#ico-flask" x="742" y="585" width="34" height="40" color="#c9a84c" opacity="0.07" transform="rotate(-20,759,605)"/>
+        <use href="#ico-micro" x="830" y="586" width="34" height="41" color="#c9a84c" opacity="0.07" transform="rotate(19,847,607)"/>
+        <use href="#ico-micro" x="902" y="584" width="34" height="41" color="#c9a84c" opacity="0.07" transform="rotate(-7,919,604)"/>
+        <use href="#ico-benzene" x="986" y="590" width="34" height="34" color="#6eb5e0" opacity="0.09" transform="rotate(12,1003,607)"/>
+        <use href="#ico-erlen" x="1065" y="583" width="34" height="40" color="#e87a4e" opacity="0.09" transform="rotate(10,1082,603)"/>
+        <use href="#ico-micro" x="1142" y="574" width="34" height="41" color="#6eb5e0" opacity="0.08" transform="rotate(-9,1159,595)"/>
+        <use href="#ico-benzene" x="1220" y="581" width="34" height="34" color="#6eb5e0" opacity="0.07" transform="rotate(22,1237,598)"/>
+        <use href="#ico-benzene" x="31" y="664" width="34" height="34" color="#c9a84c" opacity="0.08" transform="rotate(-8,48,681)"/>
+        <use href="#ico-atom" x="106" y="660" width="34" height="34" color="#e05555" opacity="0.08" transform="rotate(-11,123,677)"/>
+        <use href="#ico-mol" x="179" y="672" width="34" height="17" color="#c9a84c" opacity="0.09" transform="rotate(9,196,680)"/>
+        <use href="#ico-flask" x="259" y="667" width="34" height="40" color="#c9a84c" opacity="0.09" transform="rotate(-7,276,687)"/>
+        <use href="#ico-atom" x="350" y="670" width="34" height="34" color="#c9a84c" opacity="0.09" transform="rotate(-7,367,687)"/>
+        <use href="#ico-micro" x="423" y="666" width="34" height="41" color="#6eb5e0" opacity="0.07" transform="rotate(-22,440,687)"/>
+        <use href="#ico-atom" x="497" y="656" width="34" height="34" color="#c9a84c" opacity="0.08" transform="rotate(6,514,673)"/>
+        <use href="#ico-tube" x="577" y="645" width="34" height="68" color="#e05555" opacity="0.09" transform="rotate(-6,594,679)"/>
+        <use href="#ico-atom" x="662" y="671" width="34" height="34" color="#c9a84c" opacity="0.08" transform="rotate(13,679,688)"/>
+        <use href="#ico-dna" x="748" y="650" width="34" height="63" color="#e87a4e" opacity="0.08" transform="rotate(-6,765,681)"/>
+        <use href="#ico-flask" x="821" y="658" width="34" height="40" color="#c9a84c" opacity="0.09" transform="rotate(-19,838,678)"/>
+        <use href="#ico-mol" x="902" y="668" width="34" height="17" color="#c9a84c" opacity="0.07" transform="rotate(-15,919,677)"/>
+        <use href="#ico-atom" x="989" y="670" width="34" height="34" color="#e05555" opacity="0.07" transform="rotate(1,1006,687)"/>
+        <use href="#ico-mol" x="1064" y="678" width="34" height="17" color="#c9a84c" opacity="0.07" transform="rotate(-7,1081,686)"/>
+        <use href="#ico-atom" x="1141" y="668" width="34" height="34" color="#c9a84c" opacity="0.07" transform="rotate(-9,1158,685)"/>
+        <use href="#ico-atom" x="1219" y="663" width="34" height="34" color="#c9a84c" opacity="0.07" transform="rotate(16,1236,680)"/>
+        <use href="#ico-tube" x="24" y="727" width="34" height="68" color="#c9a84c" opacity="0.07" transform="rotate(-15,41,761)"/>
+        <use href="#ico-micro" x="104" y="744" width="34" height="41" color="#c9a84c" opacity="0.08" transform="rotate(19,121,764)"/>
+        <use href="#ico-mol" x="189" y="746" width="34" height="17" color="#c9a84c" opacity="0.09" transform="rotate(6,206,754)"/>
+        <use href="#ico-flask" x="263" y="732" width="34" height="40" color="#e87a4e" opacity="0.09" transform="rotate(-5,280,752)"/>
+        <use href="#ico-atom" x="335" y="743" width="34" height="34" color="#e05555" opacity="0.09" transform="rotate(11,352,760)"/>
+        <use href="#ico-flask" x="429" y="740" width="34" height="40" color="#e05555" opacity="0.08" transform="rotate(8,446,760)"/>
+        <use href="#ico-tube" x="510" y="720" width="34" height="68" color="#c9a84c" opacity="0.08" transform="rotate(15,527,754)"/>
+        <use href="#ico-micro" x="585" y="734" width="34" height="41" color="#6eb5e0" opacity="0.08" transform="rotate(-4,602,755)"/>
+        <use href="#ico-tube" x="670" y="727" width="34" height="68" color="#6eb5e0" opacity="0.08" transform="rotate(19,687,761)"/>
+        <use href="#ico-dna" x="737" y="730" width="34" height="63" color="#c9a84c" opacity="0.07" transform="rotate(4,754,762)"/>
+        <use href="#ico-mol" x="827" y="760" width="34" height="17" color="#6eb5e0" opacity="0.07" transform="rotate(24,844,768)"/>
+        <use href="#ico-flask" x="908" y="733" width="34" height="40" color="#c9a84c" opacity="0.09" transform="rotate(4,925,753)"/>
+        <use href="#ico-benzene" x="990" y="749" width="34" height="34" color="#c9a84c" opacity="0.08" transform="rotate(14,1007,766)"/>
+        <use href="#ico-flask" x="1059" y="741" width="34" height="40" color="#e05555" opacity="0.08" transform="rotate(10,1076,761)"/>
+        <use href="#ico-micro" x="1135" y="738" width="34" height="41" color="#c9a84c" opacity="0.08" transform="rotate(-18,1152,759)"/>
+        <use href="#ico-tube" x="1228" y="720" width="34" height="68" color="#6eb5e0" opacity="0.09" transform="rotate(-25,1245,754)"/>
+        <use href="#ico-benzene" x="19" y="830" width="34" height="34" color="#c9a84c" opacity="0.08" transform="rotate(-18,36,847)"/>
+        <use href="#ico-mol" x="108" y="838" width="34" height="17" color="#c9a84c" opacity="0.09" transform="rotate(-8,125,847)"/>
+        <use href="#ico-micro" x="179" y="824" width="34" height="41" color="#e05555" opacity="0.08" transform="rotate(10,196,844)"/>
+        <use href="#ico-benzene" x="259" y="817" width="34" height="34" color="#c9a84c" opacity="0.09" transform="rotate(22,276,834)"/>
+        <use href="#ico-mol" x="351" y="832" width="34" height="17" color="#e87a4e" opacity="0.08" transform="rotate(25,368,840)"/>
+        <use href="#ico-flask" x="430" y="816" width="34" height="40" color="#6eb5e0" opacity="0.09" transform="rotate(-6,447,836)"/>
+        <use href="#ico-micro" x="505" y="824" width="34" height="41" color="#c9a84c" opacity="0.08" transform="rotate(-3,522,844)"/>
+        <use href="#ico-micro" x="582" y="824" width="34" height="41" color="#6eb5e0" opacity="0.07" transform="rotate(19,599,844)"/>
+        <use href="#ico-benzene" x="670" y="827" width="34" height="34" color="#e87a4e" opacity="0.07" transform="rotate(-5,687,844)"/>
+        <use href="#ico-dna" x="750" y="802" width="34" height="63" color="#c9a84c" opacity="0.09" transform="rotate(-16,767,833)"/>
+        <use href="#ico-tube" x="818" y="812" width="34" height="68" color="#c9a84c" opacity="0.09" transform="rotate(-4,835,846)"/>
+        <use href="#ico-atom" x="899" y="828" width="34" height="34" color="#c9a84c" opacity="0.08" transform="rotate(-25,916,845)"/>
+        <use href="#ico-tube" x="983" y="808" width="34" height="68" color="#c9a84c" opacity="0.08" transform="rotate(25,1000,842)"/>
+        <use href="#ico-dna" x="1067" y="810" width="34" height="63" color="#c9a84c" opacity="0.07" transform="rotate(-4,1084,842)"/>
+        <use href="#ico-micro" x="1137" y="818" width="34" height="41" color="#c9a84c" opacity="0.07" transform="rotate(14,1154,839)"/>
+        <use href="#ico-mol" x="1228" y="826" width="34" height="17" color="#e05555" opacity="0.09" transform="rotate(-20,1245,835)"/>
+        <use href="#ico-atom" x="24" y="895" width="34" height="34" color="#e87a4e" opacity="0.07" transform="rotate(19,41,912)"/>
+        <use href="#ico-flask" x="106" y="903" width="34" height="40" color="#6eb5e0" opacity="0.07" transform="rotate(-7,123,923)"/>
+        <use href="#ico-dna" x="188" y="886" width="34" height="63" color="#e05555" opacity="0.07" transform="rotate(8,205,917)"/>
+        <use href="#ico-tube" x="267" y="885" width="34" height="68" color="#e05555" opacity="0.07" transform="rotate(14,284,919)"/>
+        <use href="#ico-micro" x="349" y="900" width="34" height="41" color="#c9a84c" opacity="0.07" transform="rotate(-11,366,920)"/>
+        <use href="#ico-micro" x="429" y="900" width="34" height="41" color="#6eb5e0" opacity="0.09" transform="rotate(-25,446,921)"/>
+        <use href="#ico-tube" x="504" y="891" width="34" height="68" color="#c9a84c" opacity="0.08" transform="rotate(-3,521,925)"/>
+        <use href="#ico-mol" x="587" y="918" width="34" height="17" color="#e87a4e" opacity="0.08" transform="rotate(-13,604,927)"/>
+        <use href="#ico-atom" x="666" y="904" width="34" height="34" color="#e05555" opacity="0.08" transform="rotate(11,683,921)"/>
+        <use href="#ico-mol" x="743" y="904" width="34" height="17" color="#c9a84c" opacity="0.09" transform="rotate(0,760,912)"/>
+        <use href="#ico-flask" x="824" y="899" width="34" height="40" color="#c9a84c" opacity="0.09" transform="rotate(6,841,919)"/>
+        <use href="#ico-erlen" x="903" y="896" width="34" height="40" color="#e05555" opacity="0.09" transform="rotate(-13,920,916)"/>
+        <use href="#ico-atom" x="984" y="909" width="34" height="34" color="#c9a84c" opacity="0.09" transform="rotate(-23,1001,926)"/>
+        <use href="#ico-flask" x="1059" y="894" width="34" height="40" color="#c9a84c" opacity="0.08" transform="rotate(21,1076,914)"/>
+        <use href="#ico-mol" x="1140" y="910" width="34" height="17" color="#6eb5e0" opacity="0.09" transform="rotate(1,1157,918)"/>
+        <use href="#ico-tube" x="1231" y="886" width="34" height="68" color="#c9a84c" opacity="0.08" transform="rotate(8,1248,920)"/>
+      </svg>
+    </div>
 
     <header class="hero">
         <div class="hero-eyebrow">بطاقة التواصل</div>
