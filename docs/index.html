@@ -51,13 +51,13 @@
         .hero {
             position: relative;
             z-index: 1;
-            background: linear-gradient(160deg, rgba(26,10,10,0.18) 0%, rgba(45,10,10,0.15) 50%, rgba(26,5,5,0.18) 100%);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+            background: transparent;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
             padding: 60px 24px 48px;
             text-align: center;
-            border-bottom: 1px solid rgba(201,168,76,0.25);
-            overflow: hidden;
+            border: 1px solid rgba(201,168,76,0.18);
+            border-radius: 0 0 24px 24px;
         }
 
         .hero::before {
@@ -153,8 +153,10 @@
         }
 
         .card {
-            background: linear-gradient(145deg, #1f0d0d, #2a1010);
-            border: 1px solid rgba(201,168,76,0.15);
+            background: transparent;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            border: 1px solid rgba(201,168,76,0.22);
             border-radius: 16px;
             padding: 28px 24px 24px;
             display: flex;
